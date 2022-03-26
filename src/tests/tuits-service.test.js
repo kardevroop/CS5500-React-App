@@ -1,5 +1,5 @@
 import {
-  createTuitByUser,
+  createTuit,
   deleteTuitByText, findAllTuits,
   findTuitById
 } from "../services/tuits-service";
@@ -52,7 +52,7 @@ describe('createTuitByUser', () => {
   // setup the tests before verification
   beforeAll(() => {
     // insert the sample user we then try to remove
-    return createTuitByUser('61fda0d7196a9717b85f4476', sampleTuit);
+    return createTuit('61fda0d7196a9717b85f4476', sampleTuit);
   });
 
   // clean up after test runs
@@ -92,7 +92,7 @@ describe('createTuitByUser', () => {
 
   test('can retrieve user from REST API by primary key', async () => {
     // insert the user in the database
-    const newUser = await createTuitByUser('61fda0d7196a9717b85f4476', sampleTuit);
+    const newUser = await createTuit('61fda0d7196a9717b85f4476', sampleTuit);
 
     // verify new user matches the parameter user
     expect(newUser.tuit).toEqual(sampleTuit.tuit);

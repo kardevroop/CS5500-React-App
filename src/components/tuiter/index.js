@@ -13,6 +13,7 @@ import Messages from "../messages";
 import Lists from "../lists";
 import More from "../more";
 import {Login} from "../profile/login";
+import MyTuits from "../profile/my-tuits";
 
 function Tuiter () {
   return(
@@ -37,6 +38,7 @@ function Tuiter () {
               <Route path="/lists" element={<Lists/>}/>
               <Route path="/profile" element={<Profile/>}/>
               <Route path="/profile/edit" element={<EditProfile/>}/>
+              <Route path="/profile/mytuits" element={<MyTuits/>}/>
               <Route path="/more" element={<More/>}/>
             </Routes>
           </div>
