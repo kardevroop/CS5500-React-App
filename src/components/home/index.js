@@ -3,17 +3,24 @@ import Tuits from "../tuits";
 import * as service from "../../services/tuits-service";
 import {useEffect, useState} from "react";
 import {useLocation, useParams} from "react-router-dom";
+import { ReactSession } from 'react-client-session';
 
 const Home = () => {
   const location = useLocation();
   const {uid} = useParams();
   const [tuits, setTuits] = useState([]);
   const [tuit, setTuit] = useState('');
-  const userId = uid;
-  console.log(uid);
+  var user = null;
+  if(uid === undefined || uid === null) {
+    user = ReactSession.get("uid")
+  } else {
+    user = uid
+  }
+  const userId = user;
+  console.log(user);
   const findTuits = () => {
-    if(uid) {
-      return service.findTuitByUser(uid)
+    if(userId) {
+      return service.findTuitByUser(userId)
         .then(tuits => setTuits(tuits))
     } else {
       return service.findAllTuits()
@@ -36,7 +43,7 @@ const Home = () => {
       <div className="border border-bottom-0">
         <h4 className="fw-bold p-2">Home Screen</h4>
         {
-          uid &&
+          userId &&
           <div className="d-flex">
             <div className="p-2">
               <img className="ttr-width-50px rounded-circle"

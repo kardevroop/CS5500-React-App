@@ -4,6 +4,7 @@ import {useState, useEffect} from "react";
 import {useNavigate, 
   Routes,
   Route} from "react-router-dom";
+  import { ReactSession } from 'react-client-session';
 /*
 const Profile = () => {
   return(
@@ -91,7 +92,11 @@ const Profile = () => {
   }, []);
   const logout = () => {
     service.logout()
-      .then(() => navigate('/login'));
+      .then(() => {
+        ReactSession.remove("username");
+        ReactSession.remove("uid");
+        navigate('/login');
+      });
   }
   return(
     <div>

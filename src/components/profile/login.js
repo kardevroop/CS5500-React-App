@@ -77,13 +77,17 @@ export const Login = () => {
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import * as service from "../../services/auth-service";
+import { ReactSession } from 'react-client-session';
 
 export const Login = () => {
   const [loginUser, setLoginUser] = useState({});
   const navigate = useNavigate()
   const login = () =>
     service.login(loginUser)
-      .then((user) => navigate('/profile/mytuits'))
+      .then((user) => {
+        ReactSession.set("username", user.username);
+        ReactSession.set("uid", user._id);
+        navigate('/profile/mytuits');})
       .catch(e => alert(e));
   return (
     <div>
