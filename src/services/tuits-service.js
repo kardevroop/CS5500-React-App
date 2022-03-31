@@ -3,8 +3,12 @@ import axios from "axios";
 //const TUITS_API = "https://cs5500-fse-a2.herokuapp.com/api/tuits";
 //const USERS_API = "https://cs5500-fse-a2.herokuapp.com/api/users";
 
-const TUITS_API = "http://localhost:4000/api/tuits";
-const USERS_API = "http://localhost:4000/api/users";
+//const TUITS_API = "http://localhost:4000/api/tuits";
+//const USERS_API = "http://localhost:4000/api/users";
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+const USERS_API = `${BASE_URL}/api/users`;
+const TUITS_API = `${BASE_URL}/api/tuits`;
 
 const api = axios.create({
     withCredentials: true
