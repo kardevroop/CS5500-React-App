@@ -9,7 +9,7 @@ import Tuiter from "./components/tuiter";
 import { ReactSession } from 'react-client-session';
 
 function App() {
-  ReactSession.setStoreType("localStorage");
+  ReactSession.setStoreType("sessionStorage");
   return (
     <Tuiter/>
   );
